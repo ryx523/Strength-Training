@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runner's Plyometrics — 4-Week Progression</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0c0c0a;
+    --off-white: #f4f1eb;
+    --cream: #ede9df;
+    --accent: #d4520a;
+    --accent-light: #f07040;
+    --accent-dim: rgba(212,82,10,0.12);
+    --muted: #8a8578;
+    --border: rgba(12,12,10,0.12);
+    --week1: #1d5e3a;
+    --week2: #1a4a7a;
+    --week3: #7a2d1a;
+    --week4: #4a1a6e;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--off-white);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    color: var(--off-white);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'PLYO';
+    position: absolute;
+    right: -0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: clamp(120px, 22vw, 260px);
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 9vw, 100px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { color: var(--accent-light); font-style: normal; }
+  .hero-desc {
+    font-size: 16px;
+    color: rgba(244,241,235,0.65);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-stat-val {
+    font-family: var(--font-display);
+    font-size: 38px;
+    color: var(--off-white);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── NAV WEEKS ── */
+  .week-nav {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .week-nav::-webkit-scrollbar { display: none; }
+  .week-nav a {
+    color: rgba(244,241,235,0.45);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 20px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .week-nav a:hover { color: var(--off-white); }
+  .week-nav a.active { color: var(--accent-light); border-bottom-color: var(--accent); }
+
+  /* ── MAIN LAYOUT ── */
+  main { max-width: 900px; margin: 0 auto; padding: 0 2rem 6rem; }
+
+  /* ── WEEK SECTION ── */
+  .week-section { padding-top: 5rem; }
+  .week-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .week-num {
+    font-family: var(--font-display);
+    font-size: 80px;
+    line-height: 1;
+    min-width: 90px;
+    color: var(--black);
+    opacity: 0.08;
+  }
+  .week-meta { padding-top: 6px; }
+  .week-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .week-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .week-subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  /* ── COACH REMINDER BOX ── */
+  .coach-banner {
+    background: var(--black);
+    color: var(--off-white);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .coach-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .coach-banner h3 {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .coach-banner p {
+    font-size: 14px;
+    color: rgba(244,241,235,0.75);
+    line-height: 1.65;
+  }
+  .coach-banner ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 6px;
+  }
+  .coach-banner ul li {
+    font-size: 14px;
+    color: rgba(244,241,235,0.75);
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.55;
+  }
+  .coach-banner ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-light);
+    font-size: 12px;
+  }
+
+  /* ── EXERCISE GRID ── */
+  .exercises { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .video-link-wrap {
+    border-top: 1px solid var(--border);
+    padding: 0.85rem 1.4rem;
+    background: var(--cream);
+  }
+  .video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .video-link:hover {
+    background: var(--off-white);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .video-link-icon {
+    font-size: 11px;
+    color: var(--accent);
+  }
+  .video-link-text { flex: 1; }
+  .video-link-arrow {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── EXERCISE CARD ── */
+  /* ── EXERCISE CARD ── */
+  .ex-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .ex-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+
+  .ex-header {
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .ex-number {
+    font-family: var(--font-display);
+    font-size: 32px;
+    line-height: 1;
+    color: rgba(0,0,0,0.1);
+    min-width: 36px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .ex-info { flex: 1; }
+  .ex-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .ex-details-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .ex-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--cream);
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .ex-badge.accent { background: var(--accent-dim); color: var(--accent); }
+  .ex-volume {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .ex-chevron {
+    font-size: 18px;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.25s;
+    padding-top: 6px;
+  }
+  .ex-card.open .ex-chevron { transform: rotate(180deg); }
+
+  .ex-body {
+    display: none;
+    border-top: 1px solid var(--border);
+  }
+  .ex-card.open .ex-body { display: block; }
+
+
+  .ex-cues {
+    padding: 1.25rem 1.4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 560px) { .ex-cues { grid-template-columns: 1fr; } }
+  .cue-block h4 {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .cue-block p, .cue-block li {
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.6;
+  }
+  .cue-block ul { list-style: none; padding: 0; }
+  .cue-block ul li { padding-left: 14px; position: relative; }
+  .cue-block ul li::before { content: '·'; position: absolute; left: 0; font-weight: 700; color: var(--accent); }
+
+  /* ── PROGRESSION INDICATOR ── */
+  .progression-arrow {
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .progression-arrow::before,
+  .progression-arrow::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: var(--border);
+  }
+
+  /* ── WEEK COLORS ── */
+  .w1 .week-tag { background: rgba(29,94,58,0.12); color: var(--week1); }
+  .w1 .week-num { color: var(--week1); opacity: 0.15; }
+  .w2 .week-tag { background: rgba(26,74,122,0.12); color: var(--week2); }
+  .w2 .week-num { color: var(--week2); opacity: 0.15; }
+  .w3 .week-tag { background: rgba(122,45,26,0.12); color: var(--week3); }
+  .w3 .week-num { color: var(--week3); opacity: 0.15; }
+  .w4 .week-tag { background: rgba(74,26,110,0.12); color: var(--week4); }
+  .w4 .week-num { color: var(--week4); opacity: 0.15; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: rgba(244,241,235,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  footer strong { color: var(--accent-light); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Runner's Strength Plan</p>
+    <h1>4-WEEK<br><em>PLYOMETRIC</em><br>PROGRESSION</h1>
+    <p class="hero-desc">A structured progression from foundation mechanics to peak explosive power. Each week adds load, intensity, and complexity — built specifically to make you a faster, more resilient runner.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val">4</div>
+        <div class="hero-stat-label">Weeks</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">2×</div>
+        <div class="hero-stat-label">Per week</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">40</div>
+        <div class="hero-stat-label">Min / session</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">14</div>
+        <div class="hero-stat-label">Exercises</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="week-nav" id="weekNav">
+  <a href="#week1" class="active">Week 1 — Foundation</a>
+  <a href="#week2">Week 2 — Load</a>
+  <a href="#week3">Week 3 — Power</a>
+  <a href="#week4">Week 4 — Integration</a>
+</nav>
+
+<main>
+
+  <!-- ══════════════ WEEK 1 ══════════════ -->
+  <section class="week-section w1" id="week1">
+    <div class="week-header">
+      <div class="week-num">01</div>
+      <div class="week-meta">
+        <span class="week-tag">Foundation</span>
+        <div class="week-title">Build the Base</div>
+        <div class="week-subtitle">Establish movement quality and joint prep. Lower volume, strict technique focus. Your tendons and joints adapt slower than your muscles — respect this week.</div>
+      </div>
+    </div>
+
+    <div class="coach-banner">
+      <div class="coach-icon">🎙</div>
+      <div>
+        <h3>Coach's reminders — Week 1</h3>
+        <ul>
+          <li>Every landing must be silent. If you're making noise, you're not absorbing force — you're dumping it into your joints.</li>
+          <li>Do not progress volume mid-week. Finish all sessions at the prescribed reps even if they feel easy.</li>
+          <li>Rest 90 seconds between all sets this week. Your tendons need full recovery to adapt.</li>
+          <li>After each session: note any joint soreness (not muscle soreness) in a log. Pain in the knee, ankle, or hip = reduce volume next session.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exercises">
+
+      <div class="ex-card" id="ex-w1-1">
+        <div class="ex-header" onclick="toggleEx('ex-w1-1')">
+          <div class="ex-number">01</div>
+          <div class="ex-info">
+            <div class="ex-name">Jump Squats</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">2 × 6 reps</span>
+              <span class="ex-badge">power</span>
+              <span class="ex-volume">↓ from working volume · quality focus</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=tZSYZdtbONc" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Jump Squat Proper Form — NASM</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Jump Squat Proper Form — NASM</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 1 focus</h4>
+              <ul>
+                <li>2 sets of 6 — prioritise landing mechanics</li>
+                <li>Absorb each landing over 3 full counts</li>
+                <li>Knees track over middle toes on landing</li>
+                <li>Full reset between every rep</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Imagine landing in sand. You want to leave a shallow, even footprint — not crash through the surface. This mental image cues the soft, controlled absorption that protects your knees and builds the right habit from day one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w1-2">
+        <div class="ex-header" onclick="toggleEx('ex-w1-2')">
+          <div class="ex-number">02</div>
+          <div class="ex-info">
+            <div class="ex-name">Single-Leg Bounds</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">2 × 4 reps each leg</span>
+              <span class="ex-badge">unilateral</span>
+              <span class="ex-volume">stick every landing · hold 2 sec</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=oNKXelqRGoM" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Bounding Drill Progression</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Bounding Drill Progression</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 1 focus</h4>
+              <ul>
+                <li>Reduced reps — prioritise balance on landing</li>
+                <li>Drive opposite knee forward and high</li>
+                <li>Stick landing 2 full seconds before next rep</li>
+                <li>Note any left-right difference in distance</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Most runners discover a noticeable gap between legs this week. Your weaker leg reveals itself here. Don't compensate by reducing effort on the strong side — instead, give the weak leg an extra focused set at the end.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w1-3">
+        <div class="ex-header" onclick="toggleEx('ex-w1-3')">
+          <div class="ex-number">03</div>
+          <div class="ex-info">
+            <div class="ex-name">Pogos</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 10 sec</span>
+              <span class="ex-badge">elasticity</span>
+              <span class="ex-volume">two-legged · slow rhythm ok</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=j0nl5dWuqN4" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Pogo Jumps Tutorial — Runna</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Pogo Jumps Tutorial — Runna 2024</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 1 focus</h4>
+              <ul>
+                <li>Two-legged only this week</li>
+                <li>Short 10-sec sets — perfect rhythm</li>
+                <li>Minimal knee bend — ankles do the work</li>
+                <li>Arms relaxed at sides</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>You're training your Achilles tendon to behave like a spring. That adaptation takes weeks, not days. These early sets feel almost too easy — that's correct. The tendon stress accumulates invisibly. Don't rush to single-leg or longer sets yet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w1-4">
+        <div class="ex-header" onclick="toggleEx('ex-w1-4')">
+          <div class="ex-number">04</div>
+          <div class="ex-info">
+            <div class="ex-name">A-Skips + B-Skips</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">2 × 20m each</span>
+              <span class="ex-badge">drills</span>
+              <span class="ex-volume">slow deliberate tempo</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=vuUIW5JowjY" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">ABC Skipping Drills for Runners</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">ABC Skipping Drills 2024</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 1 focus</h4>
+              <ul>
+                <li>Slow, exaggerated tempo — feel each position</li>
+                <li>Dorsiflexed foot (toes up) at all times</li>
+                <li>Land under the hip, never in front</li>
+                <li>B-skip: fully extend then claw back</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>These drills are deceptively important. Elite runners do them daily. The B-skip's clawing motion directly rewires your foot strike pattern. Video yourself from the side this week — you'll likely see your foot landing too far forward. That's what we're fixing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="progression-arrow">↓ &nbsp; Add volume &nbsp; ↓</div>
+
+  <!-- ══════════════ WEEK 2 ══════════════ -->
+  <section class="week-section w2" id="week2">
+    <div class="week-header">
+      <div class="week-num">02</div>
+      <div class="week-meta">
+        <span class="week-tag">Load</span>
+        <div class="week-title">Add Volume</div>
+        <div class="week-subtitle">Increase sets and reps. Mechanics should now feel familiar. If any exercise still feels shaky, stay at Week 1 volume for that movement only.</div>
+      </div>
+    </div>
+
+    <div class="coach-banner">
+      <div class="coach-icon">🎙</div>
+      <div>
+        <h3>Coach's reminders — Week 2</h3>
+        <ul>
+          <li>Volume increases by ~25%. Your perceived effort should be moderate, not maximal — save the max effort for Week 3.</li>
+          <li>Rest is still 90 sec between sets. Cutting rest to "save time" is how runners pick up Achilles injuries.</li>
+          <li>Begin lateral bounds this week. Hip abductor strength is the #1 overlooked factor in running injury prevention.</li>
+          <li>If you ran hard within 24 hrs of this session, reduce sets by 1 across the board.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exercises">
+
+      <div class="ex-card" id="ex-w2-1">
+        <div class="ex-header" onclick="toggleEx('ex-w2-1')">
+          <div class="ex-number">01</div>
+          <div class="ex-info">
+            <div class="ex-name">Jump Squats</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 8 reps</span>
+              <span class="ex-badge">power</span>
+              <span class="ex-volume">↑ +1 set, +2 reps from Week 1</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=tZSYZdtbONc" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Jump Squat Proper Form — NASM</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Jump Squat Proper Form — NASM</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 2 focus</h4>
+              <ul>
+                <li>3 sets of 8 — maintain landing quality</li>
+                <li>Begin adding intent: jump as HIGH as possible</li>
+                <li>Arms swing overhead to drive height</li>
+                <li>If form breaks at rep 7-8, stop the set</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Now that mechanics are dialled in, start adding maximal intent. The difference between a half-hearted jump squat and an explosive one trains completely different muscle fibres. Pretend you're trying to touch a ceiling 2 metres above you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w2-2">
+        <div class="ex-header" onclick="toggleEx('ex-w2-2')">
+          <div class="ex-number">02</div>
+          <div class="ex-info">
+            <div class="ex-name">Box Jumps</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 6 reps</span>
+              <span class="ex-badge">power</span>
+              <span class="ex-volume">introduced this week · step down always</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=G-bxQY57mKc" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Box Jump Tutorial — Runna</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Box Jump Tutorial — Runna 2024</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 2 focus</h4>
+              <ul>
+                <li>Start low: 30–35cm box</li>
+                <li>Quick dip → explosive triple extension</li>
+                <li>Land softly, hips back, knees bent</li>
+                <li>Step down — never jump down</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Triple extension — ankle, knee, hip all fully extending simultaneously — is the same movement pattern as maximum running speed. The box just gives you a target and teaches you to express it. Box height is irrelevant; power quality is everything.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w2-3">
+        <div class="ex-header" onclick="toggleEx('ex-w2-3')">
+          <div class="ex-number">03</div>
+          <div class="ex-info">
+            <div class="ex-name">Lateral Bounds</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 6 reps each direction</span>
+              <span class="ex-badge">stability</span>
+              <span class="ex-volume">introduced this week</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=-Nype95I51k" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Lateral Bounds — Benefits & Technique</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Lateral Bounds — Benefits & Technique</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 2 focus</h4>
+              <ul>
+                <li>Push off laterally, land on single foot</li>
+                <li>Stick landing — hold 2 full seconds</li>
+                <li>Keep torso upright, no lateral lean</li>
+                <li>Aim for distance, not height</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Most runners skip lateral work entirely. But every stride involves a moment of pure single-leg side-loading. Weak glute meds = hip drops on every step = IT band, knee, and hip injury. This exercise is as much injury prevention as it is performance training.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w2-4">
+        <div class="ex-header" onclick="toggleEx('ex-w2-4')">
+          <div class="ex-number">04</div>
+          <div class="ex-info">
+            <div class="ex-name">Single-Leg Bounds</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 5 reps each leg</span>
+              <span class="ex-badge">unilateral</span>
+              <span class="ex-volume">↑ +1 set, +1 rep from Week 1</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=oNKXelqRGoM" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Bounding Drill Progression</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Bounding Drill Progression</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 2 focus</h4>
+              <ul>
+                <li>Start adding distance intent</li>
+                <li>Drive the swing knee aggressively forward</li>
+                <li>Still hold landing 1–2 sec for stability check</li>
+                <li>Any left-right gap narrowing? Good sign.</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>By end of Week 2, the weaker leg gap should be closing. If it's not, add one extra set on that side only. Don't wait until Week 3 — asymmetry compounds. A 10cm difference in bounding distance equals measurable left-right power imbalance in your running gait.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w2-5">
+        <div class="ex-header" onclick="toggleEx('ex-w2-5')">
+          <div class="ex-number">05</div>
+          <div class="ex-info">
+            <div class="ex-name">Pogos</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 15 sec</span>
+              <span class="ex-badge">elasticity</span>
+              <span class="ex-volume">↑ +5 sec per set from Week 1</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=j0nl5dWuqN4" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Pogo Jumps Tutorial — Runna</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Pogo Jumps Tutorial — Runna 2024</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 2 focus</h4>
+              <ul>
+                <li>Increase to 15-sec sets</li>
+                <li>Speed up the rhythm — faster contacts</li>
+                <li>Begin attempting single-leg on final set</li>
+                <li>Single-leg: hold wall for balance if needed</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Single-leg pogos expose Achilles asymmetry immediately. If one ankle fatigues much faster or feels "dead" rather than springy, that's your injury-risk ankle. Prioritise it with extra single-leg calf raises in your warm-up from now on.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="progression-arrow">↓ &nbsp; Add intensity &nbsp; ↓</div>
+
+  <!-- ══════════════ WEEK 3 ══════════════ -->
+  <section class="week-section w3" id="week3">
+    <div class="week-header">
+      <div class="week-num">03</div>
+      <div class="week-meta">
+        <span class="week-tag">Power</span>
+        <div class="week-title">Max Intensity</div>
+        <div class="week-subtitle">Peak loading week. Maximum explosive intent on every rep. Introduce split squat jumps and depth drops. This is where adaptation accelerates — sleep and nutrition matter.</div>
+      </div>
+    </div>
+
+    <div class="coach-banner">
+      <div class="coach-icon">🎙</div>
+      <div>
+        <h3>Coach's reminders — Week 3</h3>
+        <ul>
+          <li>This is your hardest week. Prioritise sleep — this is when tissue remodelling happens, not during training.</li>
+          <li>Eat protein within 45 minutes of each session. Plyometric training creates significant muscle protein turnover.</li>
+          <li>Rest increases to 2 minutes between sets for box jumps and split squat jumps — CNS fatigue is real.</li>
+          <li>If you feel "flat" or your jump height drops noticeably on set 2, you're accumulated fatigued. Reduce volume by 1 set and rest an extra day before your next run.</li>
+          <li>Depth drops are new this week. Take them seriously — they teach rapid force absorption that prevents impact injury.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exercises">
+
+      <div class="ex-card" id="ex-w3-1">
+        <div class="ex-header" onclick="toggleEx('ex-w3-1')">
+          <div class="ex-number">01</div>
+          <div class="ex-info">
+            <div class="ex-name">Split Squat Jumps</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 6 reps each leg</span>
+              <span class="ex-badge">power</span><span class="ex-badge">introduced</span>
+              <span class="ex-volume">new exercise · rest 2 min between sets</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=4DMvFDaqIys" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Split Squat Jump Plyos For Runners</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Split Squat Jump Plyos For Runners</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 3 focus</h4>
+              <ul>
+                <li>Start in lunge, drop and explode upward</li>
+                <li>Switch legs in the air</li>
+                <li>Land in opposite lunge — soft, controlled</li>
+                <li>Torso tall throughout — no forward hunch</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Split squat jumps are demanding on the CNS. Don't superset them with other power exercises. They mimic the exact hip extension demands of running at pace — the air time trains fast-twitch fibers that pure strength work can't reach. Count by leg, not by total reps.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w3-2">
+        <div class="ex-header" onclick="toggleEx('ex-w3-2')">
+          <div class="ex-number">02</div>
+          <div class="ex-info">
+            <div class="ex-name">Box Jumps</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 8 reps</span>
+              <span class="ex-badge">power</span>
+              <span class="ex-volume">↑ +2 reps · increase box height 5–10cm</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=G-bxQY57mKc" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Box Jump Tutorial — Runna</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Box Jump Tutorial — Runna 2024</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 3 focus</h4>
+              <ul>
+                <li>Raise box height if Week 2 felt controlled</li>
+                <li>Maximal intent on every single rep</li>
+                <li>Full reset — don't rush reps</li>
+                <li>Track how height holds across all 3 sets</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>If your jump height drops on set 3, that's CNS fatigue — not fitness. It means you gave maximal effort on sets 1 and 2, which is correct. Rest 2 full minutes. If height is still poor, call it at 2 sets. Never grind out fatigued jumps — the power quality is lost and injury risk rises.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w3-3">
+        <div class="ex-header" onclick="toggleEx('ex-w3-3')">
+          <div class="ex-number">03</div>
+          <div class="ex-info">
+            <div class="ex-name">Depth Drops</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">2 × 5 reps</span>
+              <span class="ex-badge">reactive</span><span class="ex-badge">introduced</span>
+              <span class="ex-volume">new exercise · full focus on landing</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=qHt7MmlCGRY" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Drop Jump — S&C Exercise Guide</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Drop Jump — S&C Exercise Guide</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 3 focus</h4>
+              <ul>
+                <li>Step — don't jump — off a low box (20–30cm)</li>
+                <li>Land both feet simultaneously</li>
+                <li>Ball of foot contact, immediate knee bend</li>
+                <li>Full controlled stop — no follow-up jump yet</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Depth drops are the most underused drill in running training. They train "stiffness" — the ability to accept and redirect ground reaction force rapidly. This is exactly what happens on every heel-strike in running. Athletes who can't absorb force become injured; athletes who can redirect it become fast.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w3-4">
+        <div class="ex-header" onclick="toggleEx('ex-w3-4')">
+          <div class="ex-number">04</div>
+          <div class="ex-info">
+            <div class="ex-name">Single-Leg Bounds</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 6 reps each leg</span>
+              <span class="ex-badge">unilateral</span>
+              <span class="ex-volume">↑ max distance intent</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=oNKXelqRGoM" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Bounding Drill Progression</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Bounding Drill Progression</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 3 focus</h4>
+              <ul>
+                <li>Maximum distance on each bound</li>
+                <li>Aggressive arm drive to increase power</li>
+                <li>Can reduce landing hold to 1 sec if stable</li>
+                <li>Mark and measure distance for each leg</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Try marking your landing spot with tape or chalk this week. Measuring your bound distance week-over-week is a concrete way to track power development. By Week 3, most athletes see a 10–20% improvement from Week 1. Left-right gap should now be under 10cm.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w3-5">
+        <div class="ex-header" onclick="toggleEx('ex-w3-5')">
+          <div class="ex-number">05</div>
+          <div class="ex-info">
+            <div class="ex-name">Single-Leg Pogos</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 10 sec each leg</span>
+              <span class="ex-badge">elasticity</span>
+              <span class="ex-volume">progression from two-legged</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=j0nl5dWuqN4" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Pogo Jumps Tutorial — Runna</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Pogo Jumps Tutorial — Runna 2024</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 3 focus</h4>
+              <ul>
+                <li>Full transition to single-leg</li>
+                <li>Stay on ball of foot — no heel contact</li>
+                <li>Minimise ground contact time</li>
+                <li>Freestanding — no wall unless needed</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Single-leg pogos are the closest thing to replicating the elastic demands of race-pace running. At fast paces, your foot is in contact with the ground for under 200 milliseconds. These pogos train that same rapid elastic cycle in a controlled setting. Short, sharp, springy — every contact.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="progression-arrow">↓ &nbsp; Integrate into running &nbsp; ↓</div>
+
+  <!-- ══════════════ WEEK 4 ══════════════ -->
+  <section class="week-section w4" id="week4">
+    <div class="week-header">
+      <div class="week-num">04</div>
+      <div class="week-meta">
+        <span class="week-tag">Integration</span>
+        <div class="week-title">Transfer to the Track</div>
+        <div class="week-subtitle">Reduce plyometric volume by ~30% and connect the power you've built to running. Sessions end with run-specific speed work. This week you'll feel the difference.</div>
+      </div>
+    </div>
+
+    <div class="coach-banner">
+      <div class="coach-icon">🎙</div>
+      <div>
+        <h3>Coach's reminders — Week 4</h3>
+        <ul>
+          <li>Volume is deliberately reduced. Don't add reps out of enthusiasm — supercompensation (actual adaptation) happens during reduced-load weeks.</li>
+          <li>Run 2–3 strides (80–100m at 90% effort) immediately after the plyometric session while your nervous system is primed. This is the transfer window.</li>
+          <li>Focus on what's different: you should notice quicker ground contact, easier push-off on hills, and more responsive turnover. If you don't, that's feedback — more glute activation work is needed.</li>
+          <li>After Week 4: rest 5–7 days from structured plyo, then restart at Week 2 volume with heavier intent. You've built the foundation — the second cycle is where performance surges.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exercises">
+
+      <div class="ex-card" id="ex-w4-1">
+        <div class="ex-header" onclick="toggleEx('ex-w4-1')">
+          <div class="ex-number">01</div>
+          <div class="ex-info">
+            <div class="ex-name">Jump Squats + Box Jumps (combined)</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">2 × 5 each exercise</span>
+              <span class="ex-badge">power</span>
+              <span class="ex-volume">↓ reduced volume · max quality</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=tZSYZdtbONc" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Jump Squat Proper Form — NASM</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Jump Squat Proper Form — NASM</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 4 focus</h4>
+              <ul>
+                <li>Reduced to 2 sets each — maximum intent</li>
+                <li>Think of these as "reminders" not "builders"</li>
+                <li>Full recovery between exercises</li>
+                <li>Compare jump height to Week 3 — note any gains</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Many athletes feel their best jumps in a deload week. Your nervous system is fresh, adaptations have settled in, and fatigued compensations are gone. If you hit a new height PR this week, that's not luck — that's what proper periodisation feels like. Enjoy it and record it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w4-2">
+        <div class="ex-header" onclick="toggleEx('ex-w4-2')">
+          <div class="ex-number">02</div>
+          <div class="ex-info">
+            <div class="ex-name">Depth Drops → Reactive Bound</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 4 reps</span>
+              <span class="ex-badge">reactive</span><span class="ex-badge">progression</span>
+              <span class="ex-volume">land and immediately bound forward</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=qHt7MmlCGRY" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Drop Jump — S&C Exercise Guide</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Drop Jump — S&C Exercise Guide</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 4 focus</h4>
+              <ul>
+                <li>Step off box, land — immediately bound forward</li>
+                <li>Goal: minimal time between landing and take-off</li>
+                <li>The quicker the reactive bound, the better</li>
+                <li>This is the closest exercise to actual running mechanics</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>This is the integration exercise. Drop → land → GO. You're training the reflex arc: eccentric load in, concentric power out. This is the stretch-shortening cycle in its purest form. Aim to be off the ground within 150–200ms of landing. If you pause, you've reset the spring — the energy is lost. React, don't think.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w4-3">
+        <div class="ex-header" onclick="toggleEx('ex-w4-3')">
+          <div class="ex-number">03</div>
+          <div class="ex-info">
+            <div class="ex-name">Fast Feet + Sprint Strides</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 10 sec fast feet → 60m stride</span>
+              <span class="ex-badge">cadence</span><span class="ex-badge">integration</span>
+              <span class="ex-volume">the transfer drill</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=mP2zippJ4SQ" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">Fast Feet Running Drill — Technique</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">Fast Feet Running Drill — Technique</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 4 focus</h4>
+              <ul>
+                <li>10 sec fast feet — max cadence in place</li>
+                <li>Immediately transition to a 60m stride at 85–90%</li>
+                <li>Bring the fast-feet rhythm into the stride</li>
+                <li>Walk back and repeat × 3</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>This is where weeks of training becomes running speed. The fast feet prime your nervous system for high cadence, then you immediately express it in actual running. You should feel lighter, more forward, and more "connected" to the ground than before this block. That feeling? That's running economy improving in real time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card" id="ex-w4-4">
+        <div class="ex-header" onclick="toggleEx('ex-w4-4')">
+          <div class="ex-number">04</div>
+          <div class="ex-info">
+            <div class="ex-name">A-Skips + B-Skips (fast tempo)</div>
+            <div class="ex-details-row">
+              <span class="ex-badge accent">3 × 30m each</span>
+              <span class="ex-badge">drills</span>
+              <span class="ex-volume">↑ faster tempo vs Week 1</span>
+            </div>
+          </div>
+          <div class="ex-chevron">▾</div>
+        </div>
+        <div class="ex-body">
+          <div class="video-link-wrap">
+            <a href="https://www.youtube.com/watch?v=vuUIW5JowjY" target="_blank" rel="noopener" class="video-link">
+              <span class="video-link-icon">▶</span>
+              <span class="video-link-text">ABC Skipping Drills for Runners</span>
+              <span class="video-link-arrow">↗</span>
+            </a>
+          </div>
+              <div class="video-label">ABC Skipping Drills 2024</div>
+            </div>
+          </div>
+          <div class="ex-cues">
+            <div class="cue-block">
+              <h4>Week 4 focus</h4>
+              <ul>
+                <li>Faster, more rhythmic tempo vs Week 1</li>
+                <li>Longer distance: 30m vs 20m</li>
+                <li>Feel the mechanics now embedded in muscle memory</li>
+                <li>Immediately run 40m at race pace after each drill</li>
+              </ul>
+            </div>
+            <div class="cue-block">
+              <h4>Coach's cue</h4>
+              <p>Compare your skips to Week 1. The rhythm should feel completely different — automatic, fluid, and fast. Your foot strike pattern in the 40m run-out should now naturally land under your hips. You've rewritten your motor programme. This is the lasting benefit that carries into every run from here on.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Runner's Plyometric Progression</strong> &nbsp;·&nbsp; 2 sessions per week &nbsp;·&nbsp; 48 hrs between sessions and hard runs &nbsp;·&nbsp; After completion: rest 5–7 days, then restart at Week 2
+</footer>
+
+<script>
+  function toggleEx(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  // Sticky nav active state
+  const sections = document.querySelectorAll('.week-section');
+  const navLinks = document.querySelectorAll('.week-nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const id = entry.target.id;
+        const link = document.querySelector('.week-nav a[href="#' + id + '"]');
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
